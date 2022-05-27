@@ -1,12 +1,17 @@
 import datetime
 
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from .models import Registration
+from .models import Registration, Rooms
 
 
 @receiver(post_save, sender=Registration)
-def create_profile(sender, instance, created, **kwargs):
+def create_profile(sender, instance, created,**kwargs):
     if created:
-        instance.rooms.room_bool = False
+        instance.rooms.room_bool = instance.room_bool
+        instance.rooms.save()
+        instance.price = instance.rooms.price
+        instance.save()
+    elif not created:
+        instance.rooms.room_bool = instance.room_bool
         instance.rooms.save()
