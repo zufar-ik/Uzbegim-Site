@@ -1,12 +1,7 @@
 from django.urls import path
-
-from .views import obj, time, price, view, Deta
+from .views import RegList, RegDetail
 
 urlpatterns = [
-  path("get/by/<int:pk>/", obj,name='adm'),
-  path("get/b/<int:pk>/", time,name='adm'),
-  path('get/<int:pk>/',price),
-  path('admin_pan/',view,name='add'),
-  # path('admin_pa/',upd,name='dd'),
-  path('get/<int:pk>/',Deta.as_view(),name='qq')
-    ]
+    path('<int:pk>/', RegDetail.as_view()),
+    path('', RegList.as_view()),
+]
