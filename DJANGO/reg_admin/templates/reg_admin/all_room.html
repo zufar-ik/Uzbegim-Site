@@ -1,0 +1,15 @@
+{% extends 'reg_admin/base.html' %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+        <div class="col-md-6 offset-3 py-5">
+            <h1 class="text-center">Add Post</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {{rooms.first_name}}
+                <button type="submit" class="btn btn-primary">Add Post</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
