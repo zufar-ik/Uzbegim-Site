@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import DetailView
 from rest_framework import generics
 from .models import Registration
-from .serializers import RegSerializer
+from .serializers import RegSerializer, RegUpdate
 from .models import Registration, Rooms
 import datetime
 
@@ -14,7 +14,7 @@ class RegList(generics.ListCreateAPIView):
 
 class RegDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Registration.objects.all()
-    serializer_class = RegSerializer
+    serializer_class = RegUpdate
 
 
 def obj(request, pk):

@@ -9,7 +9,6 @@ class PostImageAdmin(admin.StackedInline):
 
 @admin.register(Rooms)  # model основного класса
 class PostAdmin(admin.ModelAdmin):
-    inlines = [PostImageAdmin]
 
     class Meta:
         model = Rooms
@@ -21,6 +20,8 @@ class PostAdmin(admin.ModelAdmin):
 class PageAdmin(admin.ModelAdmin):
     list_display = ('rooms', 'first_name', 'last_name', 'visit_date', 'leave_date', 'admin', 'room_bool', 'price')
     list_filter = ('rooms',)
+    raw_id_fields = ('admin',)
+
     readonly_fields = ('visit_date', 'price')
     admin.site.site_header = 'Uzbegim'
 
