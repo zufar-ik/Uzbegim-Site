@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import UserReg
+
+class PostImageAdmin(admin.StackedInline):
+    model = UserReg
+
+class PageAdmin(admin.ModelAdmin):
+
+    list_display = ('rooms', 'first_name', 'last_name', 'visit_date','tel_num')
+    list_filter = ('first_name',)
+
+admin.site.register(UserReg, PageAdmin)

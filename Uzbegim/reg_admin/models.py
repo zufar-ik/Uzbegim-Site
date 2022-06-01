@@ -29,13 +29,14 @@ class Registration(models.Model):
     objects = None
     rooms = models.ForeignKey(Rooms, on_delete=models.CASCADE, verbose_name='Номер',
                               help_text='Номер в который хотите заселить гостя!',
+                              limit_choices_to={'room_bool': True},related_name='reg'
                          )
     first_name = models.CharField(max_length=150, verbose_name='Имя')
     last_name = models.CharField(max_length=150, verbose_name='Фамилия')
     admin = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Администратор',related_name='admins')
     pasport_serial_num = models.CharField(max_length=100, verbose_name='Серия паспорта', help_text='*AB-0123456')
     birth_date = models.DateField(verbose_name='Дата рождения')
-    img = models.FileField(verbose_name='Фото документа', help_text='Загружайте файл в формате .pdf')
+    img = models.FileField(verbose_name='Фото документа', help_text='Загружайте файл в формате .pdf',upload_to='PDF img')
     visit_date = models.DateField(
         default=django.utils.timezone.localdate, verbose_name='Дата прибытия')
     leave_date = models.DateField(blank=True, null=True, verbose_name='Дата отбытия', default='После ухода!')
