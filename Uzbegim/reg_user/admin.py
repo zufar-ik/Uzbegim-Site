@@ -8,7 +8,7 @@ class PostImageAdmin(admin.StackedInline):
 
 class PageAdmin(admin.ModelAdmin):
 
-    list_display = ('rooms', 'first_name', 'last_name', 'visit_date','tel_num')
+    list_display = ('room_category', 'first_name', 'last_name', 'visit_date','tel_num')
     list_filter = ('first_name',)
 
 admin.site.register(UserReg, PageAdmin)

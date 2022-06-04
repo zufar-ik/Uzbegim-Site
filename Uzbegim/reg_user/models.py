@@ -7,9 +7,13 @@ from reg_admin.models import Rooms
 
 class UserReg(models.Model):
     objects = None
-    rooms = models.ForeignKey(Rooms, on_delete=models.CASCADE, verbose_name='Номер',
-                              help_text='Номер в который хотите заселить гостя!', related_name='user'
-                              )
+    Category = [
+        ('standard', 'Standard'),
+        ('double', 'Double'),
+        ('lux', 'Lux'),
+        ('president lux', 'President Lux'),
+    ]
+    room_category = models.CharField(max_length=50, choices=Category, verbose_name='Категория')
     first_name = models.CharField(max_length=150, verbose_name='Имя')
     last_name = models.CharField(max_length=150, verbose_name='Фамилия')
     birth_date = models.DateField(verbose_name='Дата рождения')
