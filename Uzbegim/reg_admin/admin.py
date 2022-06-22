@@ -13,7 +13,7 @@ class PostAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Rooms
-    list_display = ('room_num', 'category', 'room_bool', 'price')
+    list_display = ('room_num', 'category', 'room_bool', 'price',)
     list_filter = ('category',)
 
 class PageAdmin(admin.ModelAdmin):
@@ -22,7 +22,7 @@ class PageAdmin(admin.ModelAdmin):
         form.base_fields['admin'].initial = request.user
         return form
 
-    list_display = ('rooms', 'first_name', 'last_name', 'visit_date', 'leave_date', 'admin', 'room_bool', 'price')
+    list_display = ('rooms', 'first_name', 'last_name', 'visit_date', 'leave_date', 'admin', 'room_bool', 'price','pay_type')
     list_filter = ('rooms',)
 
 admin.site.register(Registration, PageAdmin)

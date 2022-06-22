@@ -22,7 +22,6 @@ class RegUpdate(serializers.ModelSerializer):
     visit_date = serializers.PrimaryKeyRelatedField(read_only=True)
     first_name = serializers.PrimaryKeyRelatedField(read_only=True)
     last_name = serializers.PrimaryKeyRelatedField(read_only=True)
-
     class Meta:
         model = Registration
         fields = ['rooms', 'first_name', 'last_name', 'visit_date', 'leave_date', 'room_bool', 'admin']

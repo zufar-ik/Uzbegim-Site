@@ -26,6 +26,11 @@ class Rooms(models.Model):
 
 
 class Registration(models.Model):
+    type = [
+        ('Site','Сайт'),
+        ('Bot','Бот'),
+        ('Reseption','Ресепшен')
+            ]
     objects = None
     rooms = models.ForeignKey(Rooms, on_delete=models.CASCADE, verbose_name='Номер',
                               help_text='Номер в который хотите заселить гостя!',
@@ -44,9 +49,11 @@ class Registration(models.Model):
     room_bool = models.BooleanField(default=False, verbose_name='Релевантность',
                                     help_text='При бронирование отключите галочку')
     price = models.IntegerField(verbose_name='Цена (сум)', null=True)
+    pay_type = models.CharField(max_length=15,choices=type,verbose_name='Платеж произведен')
 
     def __str__(self):
         return f'{self.rooms},{self.last_name},{self.first_name},{self.room_bool},{self.admin}'
+
 
     class Meta:
         verbose_name = 'Номер'

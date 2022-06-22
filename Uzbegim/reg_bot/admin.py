@@ -21,7 +21,7 @@ class ImageAdmin(admin.ModelAdmin):
     class Meta:
         model = Category
 
-    list_display = ('name', 'room_num', 'price')
+    list_display = ('name', 'room_num', 'price_uz')
     list_filter = ('name',)
 
 admin.site.register(User, User_db)
