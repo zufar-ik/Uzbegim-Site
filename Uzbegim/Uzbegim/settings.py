@@ -39,7 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  # new
+    'allauth',  # new
+    'allauth.account',  # new
+    'allauth.socialaccount',  # new
+    'dj_rest_auth.registration',  # new
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'drf_yasg',  # new
     'reg_bot',
     'reg_user',
@@ -73,12 +80,19 @@ TEMPLATES = [
         },
     },
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+SITE_ID = 1 # new
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',  # new
+    ],
 }
-
 
 WSGI_APPLICATION = 'Uzbegim.wsgi.application'
 
