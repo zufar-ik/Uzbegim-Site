@@ -5,3 +5,5 @@ class RegUserConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'reg_user'
     verbose_name = "Сайт"
+    def ready(self):
+        import reg_user.signals

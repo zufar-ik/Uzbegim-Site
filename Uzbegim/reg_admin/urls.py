@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import RegList, RegUpdater, RegCreate, RegDetail, calc
+from .views import RegList, RegUpdater, RegCreate, RegDetail
 
 urlpatterns = [
     path('all_rooms/', RegList.as_view(), name='view'),

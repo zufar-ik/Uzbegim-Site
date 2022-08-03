@@ -2,13 +2,14 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny
 
-from .models import UserReg
-from .serializers import User
+from .models import UserReg, UserRoom, UserImg
+from .serializers import User, UserRoomSer
 
 
 class UserList(ListAPIView):
-    queryset = UserReg.objects.all()
-    serializer_class = User
+    permission_classes = [AllowAny]
+    queryset = UserRoom.objects.all()
+    serializer_class = UserRoomSer
 
 
 class UserCreate(CreateAPIView):

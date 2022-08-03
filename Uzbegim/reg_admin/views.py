@@ -25,24 +25,6 @@ class RegUpdater(RetrieveUpdateAPIView):
 class RegDetail(RetrieveAPIView):
     queryset = Registration.objects.all()
     serializer_class = RegDeteil
-
-
-def calc(request,pk):
-    one_room_price = Rooms.objects.get(pk=pk)
-    day = Registration.objects.get(rooms_id=pk)
-    vis = day.visit_date
-    lea = day.leave_date
-    price = one_room_price.price
-    a = lea - vis
-    if a == '0:00:00':
-        a = int(1)
-        total_price = (a * price)
-    else:
-        a = int(a.days)
-        print(a)
-        total_price =(a * price)
-        Registration.objects.filter(rooms_id=pk).update(price=int(total_price))
-        print(Registration.price)
 # def some_view(request):
 #     # Создать файлоподобный буфер для приема данных PDF.
 #     buffer = io.BytesIO()
