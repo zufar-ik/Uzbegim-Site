@@ -1,9 +1,12 @@
+from .views import UserCreate, UserRoomViewSet, RoomList
 from django.urls import path
-
-from .views import UserList, UserCreate, UserDetail
+from rest_framework import routers
 
 urlpatterns = [
-    path('all_room/', UserList.as_view(), name='all_room'),
-    path('add_room/', UserCreate.as_view(), name='add_room'),
-    path('detail_room/<int:pk>', UserDetail.as_view(), name='detail_room'),
+    path('room/', RoomList.as_view(), name='all_room'),
+    path('booking/', UserCreate.as_view(), name='add_room'),
 ]
+
+router = routers.DefaultRouter()
+router.register(r'room', UserRoomViewSet)
+urlpatterns += router.urls

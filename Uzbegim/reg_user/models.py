@@ -24,6 +24,7 @@ class UserReg(models.Model):
     leave_date = models.DateField(blank=True, null=True, verbose_name='Дата отбытия')
     email = models.EmailField()
     guest_count = models.IntegerField(default=1, verbose_name='Кол-во людей')
+
     class Meta:
         verbose_name = 'Номер (Reg)'
         verbose_name_plural = 'Номера (Reg)'
@@ -38,18 +39,26 @@ class UserRoom(models.Model):
         ('Standard', 'Standard'),
     ]
     name = models.CharField(max_length=150, choices=categoty, verbose_name='Категория')
-    room_num = models.CharField(max_length=150)
+    room_num = models.CharField(max_length=150, verbose_name='Доступные номера для категории')
     about = models.TextField(verbose_name='Подробности')
     price = models.IntegerField(verbose_name='Цена')
+    img360 = models.FileField(verbose_name='Фотография в 360',upload_to='Room .img/')
 
     class Meta:
         verbose_name = 'Номер (About)'
         verbose_name_plural = 'Номера (About)'
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class UserImg(models.Model):
-    name = models.ForeignKey(UserRoom, on_delete=models.CASCADE, verbose_name='img2')
-    img = models.FileField(upload_to='User img', verbose_name='Фотография')
+    objects = None
+    name = models.ForeignKey(UserRoom, on_delete=models.CASCADE, related_name='userimg_set')
+    img = models.FileField(upload_to='Room .img', verbose_name='Фотография')
+
+    def __str__(self):
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'Фотографию'
