@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Registration
+from .models import Registration, Rooms
 
 
 class RegSerializer(serializers.ModelSerializer):
@@ -31,4 +31,10 @@ class RegDeteil(serializers.ModelSerializer):
     admin = serializers.SlugRelatedField(slug_field='username', read_only=True)
     class Meta:
         model = Registration
+        fields = "__all__"
+
+
+class Room_Relevant(serializers.ModelSerializer):
+    class Meta:
+        model = Rooms
         fields = "__all__"

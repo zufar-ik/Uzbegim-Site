@@ -4,7 +4,7 @@ import io
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 from .models import Registration, Rooms
-from .serializers import RegSerializer, RegUpdate, RegViews, RegDeteil
+from .serializers import RegSerializer, RegUpdate, RegViews, RegDeteil, Room_Relevant
 
 
 class RegCreate(CreateAPIView):
@@ -25,22 +25,7 @@ class RegUpdater(RetrieveUpdateAPIView):
 class RegDetail(RetrieveAPIView):
     queryset = Registration.objects.all()
     serializer_class = RegDeteil
-# def some_view(request):
-#     # Создать файлоподобный буфер для приема данных PDF.
-#     buffer = io.BytesIO()
-#
-#     # Создайте объект PDF, используя буфер в качестве его «файла».
-#     p = canvas.Canvas(buffer)
-#
-#     # Рисуйте в PDF. Здесь происходит генерация PDF.
-#     # Полный список функций см. в документации ReportLab.
-#     p.drawString(1, 1, "Hello world.")
-#
-#     # Чисто закройте объект PDF, и все готово.
-#     p.showPage()
-#     p.save()
-#
-#     # FileResponse устанавливает заголовок Content-Disposition, чтобы браузеры
-#     # предоставить возможность сохранить файл.
-#     buffer.seek(0)
-#     return FileResponse(buffer, as_attachment=True, filename='hello.pdf')
+
+class RoomRel(ListAPIView):
+    queryset = Rooms.objects.all()
+    serializer_class = Room_Relevant

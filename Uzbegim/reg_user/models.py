@@ -42,7 +42,8 @@ class UserRoom(models.Model):
     room_num = models.CharField(max_length=150, verbose_name='Доступные номера для категории')
     about = models.TextField(verbose_name='Подробности')
     price = models.IntegerField(verbose_name='Цена')
-    img360 = models.FileField(verbose_name='Фотография в 360',upload_to='Room .img/')
+    img360 = models.FileField(verbose_name='Фотография в 360',upload_to='Фотография комнат/img360/')
+    title_img = models.FileField(verbose_name='Фотография основной панели',upload_to='Фотография комнат/title_img/')
 
     class Meta:
         verbose_name = 'Номер (About)'
@@ -55,7 +56,7 @@ class UserRoom(models.Model):
 class UserImg(models.Model):
     objects = None
     name = models.ForeignKey(UserRoom, on_delete=models.CASCADE, related_name='userimg_set')
-    img = models.FileField(upload_to='Room .img', verbose_name='Фотография')
+    img = models.FileField(upload_to='Фотография комнат', verbose_name='Фотография')
 
     def __str__(self):
         return f'{self.name}'

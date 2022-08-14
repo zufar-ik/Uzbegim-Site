@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('last_name', models.CharField(max_length=150, verbose_name='Фамилия')),
                 ('pasport_serial_num', models.CharField(help_text='*AB-0123456', max_length=100, verbose_name='Серия паспорта')),
                 ('birth_date', models.DateField(verbose_name='Дата рождения')),
-                ('img', models.FileField(help_text='Загружайте файл в формате .pdf', upload_to='PDF img', verbose_name='Фото документа')),
+                ('img', models.FileField(help_text='Загружайте файл в формате .pdf', upload_to='Паспорт Клиентов', verbose_name='Фото документа')),
                 ('visit_date', models.DateField(default=django.utils.timezone.localdate, verbose_name='Дата прибытия')),
                 ('leave_date', models.DateField(blank=True, default='После ухода!', null=True, verbose_name='Дата отбытия')),
                 ('guest_count', models.IntegerField(default=1, verbose_name='Кол-во людей')),

@@ -43,7 +43,7 @@ class Registration(models.Model):
     pasport_serial_num = models.CharField(max_length=100, verbose_name='Серия паспорта', help_text='*AB-0123456')
     tel_num = models.CharField(max_length=12, verbose_name='Номер телефона')
     img = models.FileField(verbose_name='Фото документа', help_text='Загружайте файл в формате .pdf',
-                           upload_to='PDF img')
+                           upload_to='Паспорт Клиентов')
     visit_date = models.DateField(
         default=django.utils.timezone.localdate, verbose_name='Дата прибытия')
     leave_date = models.DateField(blank=True, null=True, verbose_name='Дата отбытия', default='После ухода!')
